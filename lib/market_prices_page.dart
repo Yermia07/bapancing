@@ -12,7 +12,7 @@ class MarketPricesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Market Prices'),
+        title: Text('Harga Pasar'),
       ),
       body: Column(
         children: [
@@ -23,7 +23,7 @@ class MarketPricesPage extends StatelessWidget {
                 final price = marketPrices[index];
                 return ListTile(
                   title: Text(price.species),
-                  subtitle: Text('Price: ${price.price} IDR'),
+                  subtitle: Text('Harga: ${price.price} IDR'),
                 );
               },
             ),

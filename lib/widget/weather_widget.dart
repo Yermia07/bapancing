@@ -16,7 +16,7 @@ class WeatherWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Current Weather',
+              'Cuaca',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8.0),

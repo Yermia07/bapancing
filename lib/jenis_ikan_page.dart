@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class JenisIkanPage extends StatelessWidget {
   final List<String> jenisIkan = [
     'Ikan Laut',
-    'Ikan Laut',
-    'Ikan Laut',
-    'Ikan Laut',
-    'Ikan Laut',
-    'Ikan Laut',
+    'Ikan Mujair',
+    'Ikan Kakap',
+    'Ikan Tuna',
+    'Ikan Cakalang',
+    'Ikan salmon',
   ];
 
   @override
@@ -30,7 +30,7 @@ class JenisIkanPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Image.network(
-                    'https://via.placeholder.com/100'), // Ganti dengan gambar ikan yang sesuai
+                    'https://images.app.goo.gl/tVUCUYYbQ8v5HkVm9'), // Ganti dengan gambar ikan yang sesuai
                 Text(jenisIkan[index]),
               ],
             ),

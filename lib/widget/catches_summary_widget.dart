@@ -15,7 +15,7 @@ class CatchesSummaryWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Daily Catches Summary',
+              'Tangkapan Harian',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8.0),
@@ -23,14 +23,14 @@ class CatchesSummaryWidget extends StatelessWidget {
               children: [
                 Icon(Icons.pets, color: Colors.green),
                 SizedBox(width: 8.0),
-                Text('Total Catches: $totalCatches'),
+                Text('Total tangkapan: $totalCatches'),
               ],
             ),
             Row(
               children: [
                 Icon(Icons.scale, color: Colors.orange),
                 SizedBox(width: 8.0),
-                Text('Total Weight: $totalWeight kg'),
+                Text('Total berat: $totalWeight kg'),
               ],
             ),
           ],

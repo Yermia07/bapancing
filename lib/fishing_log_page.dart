@@ -48,7 +48,7 @@ class FishingLogPage extends StatelessWidget {
                     builder: (context) => AddFishingLogEntryPage()),
               );
             },
-            child: Text('Add New Entry'),
+            child: Text('Tambah data pancing'),
           ),
         ],
       ),

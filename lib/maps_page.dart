@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
 class MapsPage extends StatefulWidget {
   @override
@@ -7,13 +8,20 @@ class MapsPage extends StatefulWidget {
 }
 
 class _MapsPageState extends State<MapsPage> {
-  GoogleMapController? mapController;
-
-  final LatLng _center = const LatLng(1.474830, 124.842079);
-
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
+  final LatLng _center = LatLng(1.474830, 124.842079);
+  final List<Marker> _markers = [
+    Marker(
+      point: LatLng(1.474830, 124.842079),
+      builder: (ctx) => Container(
+        child: Icon(
+          Icons.location_on,
+          color: Colors.red,
+          size: 40,
+        ),
+      ),
+    ),
+    // Add more markers as needed
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -21,24 +29,26 @@ class _MapsPageState extends State<MapsPage> {
       appBar: AppBar(
         title: Text('Maps'),
       ),
-      body: GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: _center,
+      body: FlutterMap(
+        options: MapOptions(
+          center: _center,
           zoom: 11.0,
         ),
-        markers: {
-          Marker(
-            markerId: MarkerId('spot1'),
-            position: LatLng(1.474830, 124.842079),
-            infoWindow: InfoWindow(
-              title: 'Fishing Spot 1',
-              snippet: 'Detail Spot 1',
-            ),
+        children: [
+          TileLayer(
+            urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            subdomains: ['a', 'b', 'c'],
+            userAgentPackageName: 'com.example.app',
           ),
-          // Tambahkan marker lainnya sesuai kebutuhan
-        },
+          MarkerLayer(
+            markers: _markers,
+          ),
+        ],
       ),
     );
   }
 }
+
+void main() => runApp(MaterialApp(
+      home: MapsPage(),
+    ));

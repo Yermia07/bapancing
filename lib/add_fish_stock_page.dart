@@ -9,7 +9,7 @@ class AddFishStockPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add/Update Stock'),
+        title: Text('Tambah/Update Stok'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
@@ -17,11 +17,11 @@ class AddFishStockPage extends StatelessWidget {
           children: [
             TextField(
               controller: speciesController,
-              decoration: InputDecoration(labelText: 'Species'),
+              decoration: InputDecoration(labelText: 'Spesies'),
             ),
             TextField(
               controller: currentStockController,
-              decoration: InputDecoration(labelText: 'Current Stock'),
+              decoration: InputDecoration(labelText: 'Stok saat ini'),
               keyboardType: TextInputType.number,
             ),
             TextField(
@@ -35,7 +35,7 @@ class AddFishStockPage extends StatelessWidget {
                 // Implementasikan logika untuk menyimpan data baru
                 Navigator.pop(context);
               },
-              child: Text('Save Stock'),
+              child: Text('Simpan stok'),
             ),
           ],
         ),

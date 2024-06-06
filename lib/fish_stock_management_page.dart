@@ -25,7 +25,7 @@ class FishStockManagementPage extends StatelessWidget {
                 return ListTile(
                   title: Text(stock.species),
                   subtitle: Text(
-                      'Current Stock: ${stock.currentStock}, Quota: ${stock.quota}'),
+                      'Stok saat ini: ${stock.currentStock}, Quota: ${stock.quota}'),
                   trailing: Icon(
                     stock.isStockSufficient()
                         ? Icons.check_circle
@@ -44,7 +44,7 @@ class FishStockManagementPage extends StatelessWidget {
                 MaterialPageRoute(builder: (context) => AddFishStockPage()),
               );
             },
-            child: Text('Add/Update Stock'),
+            child: Text('Tambah/update stok'),
           ),
         ],
       ),

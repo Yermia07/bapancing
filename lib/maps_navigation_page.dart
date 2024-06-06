@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
 class MapsNavigationPage extends StatefulWidget {
   @override
@@ -7,26 +8,20 @@ class MapsNavigationPage extends StatefulWidget {
 }
 
 class _MapsNavigationPageState extends State<MapsNavigationPage> {
-  GoogleMapController? mapController;
-
-  final LatLng _center = const LatLng(1.474830, 124.842079);
+  final LatLng _center = LatLng(1.474830, 124.842079);
   final List<Marker> _markers = [
     Marker(
-      markerId: MarkerId('spot1'),
-      position: LatLng(1.474830, 124.842079),
-      infoWindow: InfoWindow(
-        title: 'Fishing Spot 1',
-        snippet: 'Detail Spot 1',
+      point: LatLng(1.474830, 124.842079),
+      builder: (ctx) => Container(
+        child: Icon(
+          Icons.location_on,
+          color: Colors.red,
+          size: 40,
+        ),
       ),
     ),
-    // Tambahkan marker lainnya sesuai kebutuhan
+    // Add more markers as needed
   ];
-
-  void _onMapCreated(GoogleMapController controller) {
-    setState(() {
-      mapController = controller;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +29,26 @@ class _MapsNavigationPageState extends State<MapsNavigationPage> {
       appBar: AppBar(
         title: Text('Fishing Maps'),
       ),
-      body: GoogleMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(
-          target: _center,
+      body: FlutterMap(
+        options: MapOptions(
+          center: _center,
           zoom: 11.0,
         ),
-        markers: Set.from(_markers),
+        children: [
+          TileLayer(
+            urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            subdomains: ['a', 'b', 'c'],
+            userAgentPackageName: 'com.example.app',
+          ),
+          MarkerLayer(
+            markers: _markers,
+          ),
+        ],
       ),
     );
   }
 }
+
+void main() => runApp(MaterialApp(
+      home: MapsNavigationPage(),
+    ));
